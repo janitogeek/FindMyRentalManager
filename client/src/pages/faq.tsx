@@ -15,29 +15,29 @@ export default function FAQ() {
   const faqData = staticFaqs;
   const isLoading = false;
 
-  // Group FAQs by category
-  const travelerFaqs = faqData?.filter((faq: any) => faq.category === "traveler") || [];
-  const hostFaqs = faqData?.filter((faq: any) => faq.category === "host") || [];
+  // Group FAQs by category - updated for PMC directory
+  const ownerFaqs = faqData?.filter((faq: any) => faq.category === "traveler") || [];
+  const pmcFaqs = faqData?.filter((faq: any) => faq.category === "host") || [];
 
   console.log("FAQ Data:", faqData);
-  console.log("Traveler FAQs:", travelerFaqs);
-  console.log("Host FAQs:", hostFaqs);
+  console.log("Owner FAQs:", ownerFaqs);
+  console.log("PMC FAQs:", pmcFaqs);
 
   return (
     <div className="container mx-auto px-4 py-12">
       <div className="max-w-3xl mx-auto">
         <h1 className="text-3xl font-bold mb-2">Frequently Asked Questions</h1>
         <p className="text-gray-600 mb-8">
-          Find answers to common questions about BookDirectStays.com
+          Find answers to common questions about FindMyRentalManager.com
         </p>
 
-        <Tabs defaultValue="traveler" className="mb-12">
+        <Tabs defaultValue="owner" className="mb-12">
           <TabsList className="w-full mb-6 grid grid-cols-2">
-            <TabsTrigger value="traveler">For Travelers</TabsTrigger>
-            <TabsTrigger value="host">For Property Managers</TabsTrigger>
+            <TabsTrigger value="owner">For Property Owners</TabsTrigger>
+            <TabsTrigger value="pmc">For PMCs</TabsTrigger>
           </TabsList>
           
-          <TabsContent value="traveler">
+          <TabsContent value="owner">
             {isLoading ? (
               // Loading skeleton
               Array.from({ length: 4 }).map((_, i) => (
@@ -48,7 +48,7 @@ export default function FAQ() {
               ))
             ) : (
               <Accordion type="single" collapsible className="w-full">
-                {travelerFaqs.map((faq: any) => (
+                {ownerFaqs.map((faq: any) => (
                   <AccordionItem key={faq.id} value={`faq-${faq.id}`}>
                     <AccordionTrigger className="text-left">
                       {faq.question}
@@ -62,7 +62,7 @@ export default function FAQ() {
             )}
           </TabsContent>
           
-          <TabsContent value="host">
+          <TabsContent value="pmc">
             {isLoading ? (
               // Loading skeleton
               Array.from({ length: 4 }).map((_, i) => (
@@ -73,7 +73,7 @@ export default function FAQ() {
               ))
             ) : (
               <Accordion type="single" collapsible className="w-full">
-                {hostFaqs.map((faq: any) => (
+                {pmcFaqs.map((faq: any) => (
                   <AccordionItem key={faq.id} value={`faq-${faq.id}`}>
                     <AccordionTrigger className="text-left">
                       {faq.question}
@@ -92,18 +92,18 @@ export default function FAQ() {
           <h2 className="text-xl font-semibold mb-2">Have more questions?</h2>
           <p className="mb-4">
             If you can't find the answer you're looking for, please contact our support team or
-            consider adding your property to our directory.
+            consider listing your PMC in our directory.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild className="bg-blue-600 hover:bg-blue-700 text-white">
-              <Link href="/submit">
-                Add Your Direct Booking Site
+              <Link href="/list-your-pmc">
+                List Your PMC
               </Link>
             </Button>
-            <Button asChild variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
-              <a href="mailto:info@bookdirectstays.com">
+            <Button asChild variant="outline">
+              <Link href="/support">
                 Contact Support
-              </a>
+              </Link>
             </Button>
           </div>
         </div>

@@ -6,6 +6,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/home";
 import FindHost from "@/pages/find-host";
+import SearchPMC from "@/pages/search-pmc";
+import ListYourPMC from "@/pages/list-your-pmc";
 import Country from "@/pages/country";
 import City from "@/pages/city";
 import Submit from "@/pages/submit";
@@ -38,6 +40,8 @@ function Router() {
         <Switch>
           <Route path="/" component={Home} />
           <Route path="/find-host" component={FindHost} />
+          <Route path="/search-pmc" component={SearchPMC} />
+          <Route path="/list-your-pmc" component={ListYourPMC} />
           <Route path="/country/:country/:city" component={City} />
           <Route path="/country/:country" component={Country} />
           <Route path="/submit" component={Submit} />

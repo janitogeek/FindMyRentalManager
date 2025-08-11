@@ -45,22 +45,22 @@ export default function Header() {
               List Your PMC
             </Link>
             <Link 
-              href="/how-it-works" 
-              className={`font-medium ${location === '/how-it-works' ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}
+              href="/partnerships" 
+              className={`font-medium ${location === '/partnerships' ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}
             >
-              How It Works
+              Partnerships
             </Link>
             <Link 
-              href="/resources" 
-              className={`font-medium ${location === '/resources' ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}
+              href="/faq" 
+              className={`font-medium ${location === '/faq' ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}
             >
-              Resources
+              FAQ
             </Link>
             <Link 
-              href="/support" 
-              className={`font-medium ${location === '/support' ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}
+              href="/testimonials" 
+              className={`font-medium ${location === '/testimonials' ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}
             >
-              Support
+              Testimonials
             </Link>
           </nav>
           
@@ -103,25 +103,25 @@ export default function Header() {
                 List Your PMC
               </Link>
               <Link 
-                href="/how-it-works"
-                className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/how-it-works' ? 'bg-primary/10 text-primary' : 'text-gray-700 hover:bg-gray-100'}`}
+                href="/partnerships"
+                className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/partnerships' ? 'bg-primary/10 text-primary' : 'text-gray-700 hover:bg-gray-100'}`}
                 onClick={closeMenu}
               >
-                How It Works
+                Partnerships
               </Link>
               <Link 
-                href="/resources"
-                className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/resources' ? 'bg-primary/10 text-primary' : 'text-gray-700 hover:bg-gray-100'}`}
+                href="/faq"
+                className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/faq' ? 'bg-primary/10 text-primary' : 'text-gray-700 hover:bg-gray-100'}`}
                 onClick={closeMenu}
               >
-                Resources
+                FAQ
               </Link>
               <Link 
-                href="/support"
-                className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/support' ? 'bg-primary/10 text-primary' : 'text-gray-700 hover:bg-gray-100'}`}
+                href="/testimonials"
+                className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/testimonials' ? 'bg-primary/10 text-primary' : 'text-gray-700 hover:bg-gray-100'}`}
                 onClick={closeMenu}
               >
-                Support
+                Testimonials
               </Link>
             </div>
           </div>

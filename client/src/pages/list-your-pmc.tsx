@@ -191,38 +191,35 @@ export default function ListYourPMC() {
 
   const processFormSubmission = async (values: FormValues) => {
     try {
-      // Convert form data to Airtable format
+      // Convert form data to Airtable format - using existing field names
       const airtableData = {
-        "Company Name": values["Company Name"],
-        "Company Website": values["Company Website"],
+        "Brand Name": values["Company Name"],
+        "PMC General Website": values["Company Website"],
         "Direct Booking Engine URL": values["Direct Booking Engine URL"],
-        "PMS/Channel Manager": values["PMS/Channel Manager"],
-        "Number of Properties Managed": values["Number of Properties Managed"],
+        "PMS Used": values["PMS/Channel Manager"],
+        "Number of Listings": values["Number of Properties Managed"],
         "Countries": values["Countries"].join(", "),
         "Cities / Regions": values["Cities / Regions"].map(city => city.displayName).join(", "),
-        "One-line Company Description": values["One-line Company Description"],
-        "Why Choose Your PMC?": values["Why Choose Your PMC?"],
-        "Company Stats": values["Company Stats"],
-        "Management Fee Structure": values["Management Fee Structure"],
-        "Property Types Managed": values["Property Types Managed"]?.join(", ") || "",
-        "Target Property Owners": values["Target Property Owners"]?.join(", ") || "",
-        "Pet-friendly Properties?": values["Pet-friendly Properties?"] || false,
-        "Property Features Managed": values["Property Features Managed"]?.join(", ") || "",
-        "Services Offered": values["Services Offered"]?.join(", ") || "",
-        "Company Values": values["Company Values"]?.join(", ") || "",
-        "Eco-Conscious Properties?": values["Eco-Conscious Properties?"] || false,
-        "Remote-Work Friendly Properties?": values["Remote-Work Friendly Properties?"] || false,
-        "Design Styles Managed": values["Design Styles Managed"]?.join(", ") || "",
-        "Property Atmospheres": values["Property Atmospheres"]?.join(", ") || "",
-        "Property Locations": values["Property Locations"]?.join(", ") || "",
+        "One-line Description": values["One-line Company Description"],
+        "Why Book With You": values["Why Choose Your PMC?"],
+        "Top Stats": values["Company Stats"],
+        "Types of Stays": values["Property Types Managed"]?.join(", ") || "",
+        "Ideal For": values["Target Property Owners"]?.join(", ") || "",
+        "Properties Features": values["Property Features Managed"]?.join(", ") || "",
+        "Services & Convenience": values["Services Offered"]?.join(", ") || "",
+        "Lifestyle & Values": values["Company Values"]?.join(", ") || "",
+        "Design Style": values["Design Styles Managed"]?.join(", ") || "",
+        "Atmospheres": values["Property Atmospheres"]?.join(", ") || "",
+        "Settings/Locations": values["Property Locations"]?.join(", ") || "",
         "Instagram": values["Instagram"] || "",
         "Facebook": values["Facebook"] || "",
         "LinkedIn": values["LinkedIn"] || "",
         "TikTok": values["TikTok"] || "",
-        "YouTube / Company Video": values["YouTube / Company Video"] || "",
-        "Submitted By (Email)": values["Submitted By (Email)"],
+        "YouTube / Video Tour": values["YouTube / Company Video"] || "",
+        "Email": values["Submitted By (Email)"],
         "Status": "Pending Review",
         "Submission Date": new Date().toISOString(),
+        "Plan": "PMC Directory", // Mark as PMC submission
       };
 
       // Submit to Airtable
@@ -317,9 +314,8 @@ export default function ListYourPMC() {
                   <FormLabel>Countries<RequiredAsterisk /></FormLabel>
                   <FormControl>
                     <CountryMultiSelect
-                      selectedCountries={field.value}
-                      onCountriesChange={field.onChange}
-                      countries={COUNTRIES}
+                      selected={field.value}
+                      onSelect={field.onChange}
                     />
                   </FormControl>
                   <FormMessage />
@@ -331,9 +327,8 @@ export default function ListYourPMC() {
                   <FormLabel>Cities / Regions<RequiredAsterisk /></FormLabel>
                   <FormControl>
                     <CityRegionAsyncMultiSelect
-                      selectedCities={field.value}
-                      onCitiesChange={field.onChange}
-                      countries={form.watch("Countries")}
+                      selected={field.value}
+                      onSelect={field.onChange}
                     />
                   </FormControl>
                   <FormMessage />
@@ -409,8 +404,8 @@ export default function ListYourPMC() {
                   <FormControl>
                     <SimpleMultiSelect
                       options={PROPERTY_TYPES}
-                      selectedOptions={field.value || []}
-                      onSelectionChange={field.onChange}
+                      selected={field.value || []}
+                      onSelect={field.onChange}
                       placeholder="Select property types you manage..."
                     />
                   </FormControl>
@@ -424,8 +419,8 @@ export default function ListYourPMC() {
                   <FormControl>
                     <SimpleMultiSelect
                       options={TARGET_OWNERS}
-                      selectedOptions={field.value || []}
-                      onSelectionChange={field.onChange}
+                      selected={field.value || []}
+                      onSelect={field.onChange}
                       placeholder="Select your target property owners..."
                     />
                   </FormControl>
@@ -439,9 +434,8 @@ export default function ListYourPMC() {
                   <FormControl>
                     <CheckboxGroup
                       options={SERVICES_OFFERED}
-                      selectedOptions={field.value || []}
-                      onSelectionChange={field.onChange}
-                      columns={2}
+                      selected={field.value || []}
+                      onChange={field.onChange}
                     />
                   </FormControl>
                   <FormMessage />
@@ -459,9 +453,8 @@ export default function ListYourPMC() {
                   <FormControl>
                     <CheckboxGroup
                       options={PROPERTY_FEATURES}
-                      selectedOptions={field.value || []}
-                      onSelectionChange={field.onChange}
-                      columns={3}
+                      selected={field.value || []}
+                      onChange={field.onChange}
                     />
                   </FormControl>
                   <FormMessage />
@@ -474,8 +467,8 @@ export default function ListYourPMC() {
                   <FormControl>
                     <SimpleMultiSelect
                       options={DESIGN_STYLES}
-                      selectedOptions={field.value || []}
-                      onSelectionChange={field.onChange}
+                      selected={field.value || []}
+                      onSelect={field.onChange}
                       placeholder="Select design styles you manage..."
                     />
                   </FormControl>
@@ -489,8 +482,8 @@ export default function ListYourPMC() {
                   <FormControl>
                     <SimpleMultiSelect
                       options={ATMOSPHERES}
-                      selectedOptions={field.value || []}
-                      onSelectionChange={field.onChange}
+                      selected={field.value || []}
+                      onSelect={field.onChange}
                       placeholder="Select atmospheres you manage..."
                     />
                   </FormControl>
@@ -504,8 +497,8 @@ export default function ListYourPMC() {
                   <FormControl>
                     <SimpleMultiSelect
                       options={LOCATIONS}
-                      selectedOptions={field.value || []}
-                      onSelectionChange={field.onChange}
+                      selected={field.value || []}
+                      onSelect={field.onChange}
                       placeholder="Select locations you manage..."
                     />
                   </FormControl>
@@ -524,8 +517,8 @@ export default function ListYourPMC() {
                   <FormControl>
                     <SimpleMultiSelect
                       options={COMPANY_VALUES}
-                      selectedOptions={field.value || []}
-                      onSelectionChange={field.onChange}
+                      selected={field.value || []}
+                      onSelect={field.onChange}
                       placeholder="Select your company values..."
                     />
                   </FormControl>

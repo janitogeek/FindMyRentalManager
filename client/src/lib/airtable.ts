@@ -227,7 +227,7 @@ export const airtableService = {
       throw new Error('Airtable configuration missing');
     }
 
-    console.log('📋 Fetching approved-published submissions...');
+    console.log('📋 Fetching approved-published submissions and PMC submissions...');
 
     // Run status variation test first (disabled - found the issue!)
     // await this.testStatusVariations();
@@ -278,7 +278,7 @@ export const airtableService = {
       }
     }
 
-    // Now try the filtered query
+    // Now try the filtered query for approved-published submissions
     const filterFormula = `{Status} = "Approved – Published"`;
     const url = `${AIRTABLE_API_URL}?filterByFormula=${encodeURIComponent(filterFormula)}`;
     
@@ -312,22 +312,46 @@ export const airtableService = {
       console.log('🔍 This suggests a status string mismatch');
     }
 
-    const transformedSubmissions = records.map((record, index) => {
+    // Now also fetch PMC submissions that are pending review
+    console.log('🏢 Fetching PMC submissions with status "Pending Review"...');
+    const pmcFilterFormula = `AND({Status} = "Pending Review", {Plan} = "PMC Directory")`;
+    const pmcUrl = `${AIRTABLE_API_URL}?filterByFormula=${encodeURIComponent(pmcFilterFormula)}`;
+    
+    const pmcResponse = await fetch(pmcUrl, {
+      headers: {
+        'Authorization': `Bearer ${AIRTABLE_API_KEY}`,
+      },
+    });
+
+    let pmcRecords: AirtableSubmission[] = [];
+    if (pmcResponse.ok) {
+      const pmcData = await pmcResponse.json();
+      pmcRecords = pmcData.records || [];
+      console.log('🏢 Number of PMC submissions found:', pmcRecords.length);
+    } else {
+      console.log('⚠️ Could not fetch PMC submissions:', pmcResponse.statusText);
+    }
+
+    // Combine both sets of records
+    const allApprovedRecords = [...records, ...pmcRecords];
+    console.log('📊 Total approved and PMC records:', allApprovedRecords.length);
+
+    const transformedSubmissions = allApprovedRecords.map((record, index) => {
       try {
-        console.log(`🔄 Transforming approved-published record ${index + 1}/${records.length}:`, record.id);
+        console.log(`🔄 Transforming record ${index + 1}/${allApprovedRecords.length}:`, record.id);
         console.log(`📝 Record status: ${record.fields['Status']}`);
+        console.log(`📝 Record plan: ${record.fields['Plan'] || 'N/A'}`);
         
         const transformedSubmission = this.transformSubmission(record);
         console.log('✅ Successfully transformed submission:', transformedSubmission.brandName);
         return transformedSubmission;
       } catch (error) {
-        console.error(`❌ Error transforming approved-published record ${index + 1}:`, error);
-        console.error('📋 Problematic record:', record);
-        throw error;
+        console.error(`❌ Error transforming record ${index + 1}:`, error);
+        return null;
       }
-    });
-    
-    console.log('✨ All transformed approved-published submissions:', transformedSubmissions.length);
+    }).filter(Boolean);
+
+    console.log('🎉 Final transformed submissions count:', transformedSubmissions.length);
     return transformedSubmissions;
   },
 

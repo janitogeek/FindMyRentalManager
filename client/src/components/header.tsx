@@ -33,22 +33,22 @@ export default function Header() {
               Home
             </Link>
             <Link 
-              href="/dashboard" 
-              className={`font-medium ${location === '/dashboard' ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}
+              href="/search-pmc" 
+              className={`font-medium ${location === '/search-pmc' ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}
             >
-              Dashboard
+              Find PMC
             </Link>
             <Link 
-              href="/list-property" 
-              className={`font-medium ${location === '/list-property' ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}
+              href="/list-your-pmc" 
+              className={`font-medium ${location === '/list-your-pmc' ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}
             >
-              List Your Property
+              List Your PMC
             </Link>
             <Link 
-              href="/pricing" 
-              className={`font-medium ${location === '/pricing' ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}
+              href="/how-it-works" 
+              className={`font-medium ${location === '/how-it-works' ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}
             >
-              Pricing
+              How It Works
             </Link>
             <Link 
               href="/resources" 
@@ -89,25 +89,25 @@ export default function Header() {
                 Home
               </Link>
               <Link 
-                href="/dashboard"
-                className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/dashboard' ? 'bg-primary/10 text-primary' : 'text-gray-700 hover:bg-gray-100'}`}
+                href="/search-pmc"
+                className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/search-pmc' ? 'bg-primary/10 text-primary' : 'text-gray-700 hover:bg-gray-100'}`}
                 onClick={closeMenu}
               >
-                Dashboard
+                Find PMC
               </Link>
               <Link 
-                href="/list-property"
-                className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/list-property' ? 'bg-primary/10 text-primary' : 'text-gray-700 hover:bg-gray-100'}`}
+                href="/list-your-pmc"
+                className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/list-your-pmc' ? 'bg-primary/10 text-primary' : 'text-gray-700 hover:bg-gray-100'}`}
                 onClick={closeMenu}
               >
-                List Your Property
+                List Your PMC
               </Link>
               <Link 
-                href="/pricing"
-                className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/pricing' ? 'bg-primary/10 text-primary' : 'text-gray-700 hover:bg-gray-100'}`}
+                href="/how-it-works"
+                className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/how-it-works' ? 'bg-primary/10 text-primary' : 'text-gray-700 hover:bg-gray-100'}`}
                 onClick={closeMenu}
               >
-                Pricing
+                How It Works
               </Link>
               <Link 
                 href="/resources"

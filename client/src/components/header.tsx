@@ -19,7 +19,7 @@ export default function Header() {
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center">
             <Link href="/" className="flex items-center group">
-              <span className="text-2xl font-bold text-primary">BookDirectStays</span>
+              <span className="text-2xl font-bold text-primary">FindMyRentalManager</span>
               <span className="text-2xl font-bold text-gray-700 transition-all group-hover:text-primary">.com</span>
             </Link>
           </div>
@@ -33,28 +33,34 @@ export default function Header() {
               Home
             </Link>
             <Link 
-              href="/submit" 
-              className={`font-medium ${location === '/submit' ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}
+              href="/dashboard" 
+              className={`font-medium ${location === '/dashboard' ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}
             >
-              Add Your Direct Booking Site
+              Dashboard
             </Link>
             <Link 
-              href="/partnerships" 
-              className={`font-medium ${location === '/partnerships' ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}
+              href="/list-property" 
+              className={`font-medium ${location === '/list-property' ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}
             >
-              Partnerships
+              List Your Property
             </Link>
             <Link 
-              href="/faq" 
-              className={`font-medium ${location === '/faq' ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}
+              href="/pricing" 
+              className={`font-medium ${location === '/pricing' ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}
             >
-              FAQ
+              Pricing
             </Link>
             <Link 
-              href="/testimonials" 
-              className={`font-medium ${location === '/testimonials' ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}
+              href="/resources" 
+              className={`font-medium ${location === '/resources' ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}
             >
-              Testimonials
+              Resources
+            </Link>
+            <Link 
+              href="/support" 
+              className={`font-medium ${location === '/support' ? 'text-primary' : 'text-gray-700 hover:text-primary'}`}
+            >
+              Support
             </Link>
           </nav>
           
@@ -83,32 +89,39 @@ export default function Header() {
                 Home
               </Link>
               <Link 
-                href="/submit"
-                className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/submit' ? 'bg-primary/10 text-primary' : 'text-gray-700 hover:bg-gray-100'}`}
+                href="/dashboard"
+                className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/dashboard' ? 'bg-primary/10 text-primary' : 'text-gray-700 hover:bg-gray-100'}`}
                 onClick={closeMenu}
               >
-                Add Your Direct Booking Site
+                Dashboard
               </Link>
               <Link 
-                href="/partnerships"
-                className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/partnerships' ? 'bg-primary/10 text-primary' : 'text-gray-700 hover:bg-gray-100'}`}
+                href="/list-property"
+                className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/list-property' ? 'bg-primary/10 text-primary' : 'text-gray-700 hover:bg-gray-100'}`}
                 onClick={closeMenu}
               >
-                Partnerships
+                List Your Property
               </Link>
               <Link 
-                href="/faq"
-                className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/faq' ? 'bg-primary/10 text-primary' : 'text-gray-700 hover:bg-gray-100'}`}
+                href="/pricing"
+                className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/pricing' ? 'bg-primary/10 text-primary' : 'text-gray-700 hover:bg-gray-100'}`}
                 onClick={closeMenu}
               >
-                FAQ
+                Pricing
               </Link>
               <Link 
-                href="/testimonials"
-                className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/testimonials' ? 'bg-primary/10 text-primary' : 'text-gray-700 hover:bg-gray-100'}`}
+                href="/resources"
+                className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/resources' ? 'bg-primary/10 text-primary' : 'text-gray-700 hover:bg-gray-100'}`}
                 onClick={closeMenu}
               >
-                Testimonials
+                Resources
+              </Link>
+              <Link 
+                href="/support"
+                className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/support' ? 'bg-primary/10 text-primary' : 'text-gray-700 hover:bg-gray-100'}`}
+                onClick={closeMenu}
+              >
+                Support
               </Link>
             </div>
           </div>

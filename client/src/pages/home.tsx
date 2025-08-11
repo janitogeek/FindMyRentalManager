@@ -10,10 +10,9 @@ export default function Home() {
 
   // Stats for property owners
   const ownerStats = [
-    { number: "500+", label: "Verified PMCs", icon: Building2, color: "text-blue-600" },
-    { number: "50+", label: "Countries Covered", icon: Globe, color: "text-green-600" },
-    { number: "10,000+", label: "Properties Managed", icon: HomeIcon, color: "text-purple-600" },
-    { number: "4.8/5", label: "Average Rating", icon: Star, color: "text-orange-600" }
+    { value: "1000+", label: "Verified PMCs", icon: Building2, color: "text-blue-600" },
+    { value: "50+", label: "Countries Covered", icon: Globe, color: "text-green-600" },
+    { value: "10,000+", label: "Properties Managed", icon: HomeIcon, color: "text-purple-600" }
   ];
 
   // Benefits for property owners
@@ -101,108 +100,64 @@ export default function Home() {
 
   return (
     <main className="min-h-screen">
-      {/* Hero Section - PMC Directory Focused */}
-      <section className="relative overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"
-          }}
-        ></div>
-        <div className="absolute inset-0 bg-black/60"></div>
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 text-white py-20 lg:py-32">
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
               Find Your Perfect Property Manager
             </h1>
-            <p className="text-3xl lg:text-4xl mb-8">
-              <span className="bg-gradient-to-r from-blue-400 to-green-500 bg-clip-text text-transparent font-bold">500+ verified PMCs</span> 
-              <span className="text-white"> ready to manage your</span> 
-              <span className="text-white"> rental property</span>
+            <p className="text-xl lg:text-2xl mb-8 opacity-90">
+              Connect with verified Property Management Companies specializing in Short-Term Rentals and vacation properties
             </p>
-            <p className="text-lg text-white/90 mb-12 max-w-2xl mx-auto font-medium">
-              Connect with professional property management companies that specialize in your property type and location. No more stress, just passive income.
-            </p>
-            
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 onClick={() => setLocation("/search-pmc")}
-                className="w-full sm:w-auto py-3 px-8 rounded-full bg-blue-600 text-white hover:bg-blue-700 transition-all shadow-xl text-lg font-semibold"
+                className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-4 rounded-full text-lg font-semibold"
               >
                 Find a PMC Now
               </Button>
-              <Button 
-                onClick={() => setLocation("/how-it-works")}
-                variant="outline"
-                className="w-full sm:w-auto py-3 px-8 rounded-full border-white text-white hover:bg-white hover:text-gray-900 transition-all text-lg font-semibold"
-              >
-                How It Works
-              </Button>
-            </div>
-
-            {/* Key Stats - Owner Focused */}
-            <div className="grid md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-              {ownerStats.map((stat, index) => (
-                <Card key={index} className="bg-white/10 backdrop-blur-sm border-white/20 text-white">
-                  <CardContent className="p-4 text-center">
-                    <div className={`text-2xl font-bold mb-1 ${stat.color}`}>{stat.number}</div>
-                    <div className="text-xs font-medium">{stat.label}</div>
-                  </CardContent>
-                </Card>
-              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Why Choose a PMC Section */}
-      <section className="py-20 bg-gray-50">
+      {/* Stats Section */}
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-              Why Property Owners Choose Professional PMCs
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Let professionals handle the complexities while you enjoy passive income from your rental properties.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {ownerBenefits.map((benefit, index) => (
-              <div key={index} className="text-center group hover:bg-white p-8 rounded-2xl transition-all duration-300 hover:shadow-lg">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-105 transition-transform">
-                  <benefit.icon className="w-8 h-8 text-blue-600" />
-                </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">{benefit.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{benefit.description}</p>
+          <div className="grid grid-cols-3 gap-8 max-w-4xl mx-auto">
+            {ownerStats.map((stat, index) => (
+              <div key={index} className="text-center">
+                <div className="text-3xl md:text-4xl font-bold text-blue-600 mb-2">{stat.value}</div>
+                <div className="text-sm md:text-base text-gray-600">{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* PMC Categories Section */}
-      <section className="py-20 bg-white">
+      {/* Why Choose Professional PMCs Section */}
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center mb-16">
+          <div className="max-w-6xl mx-auto text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-              Find PMCs by Property Type
+              Why Property Owners Choose Professional PMCs
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Whether you have a vacation rental, residential property, or commercial space, we have PMCs that specialize in your needs.
+              Professional property management companies offer expertise, efficiency, and peace of mind
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-            {pmcCategories.map((category, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow duration-300 cursor-pointer">
-                <CardContent className="p-6">
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {ownerBenefits.map((benefit, index) => (
+              <Card key={index} className="bg-white hover:shadow-lg transition-shadow duration-300">
+                <CardContent className="p-6 text-center">
                   <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <category.icon className="w-8 h-8 text-blue-600" />
+                    <benefit.icon className="w-8 h-8 text-blue-600" />
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{category.title}</h3>
-                  <p className="text-gray-600 text-sm">{category.description}</p>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{benefit.title}</h3>
+                  <p className="text-gray-600 text-sm">{benefit.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -211,7 +166,7 @@ export default function Home() {
       </section>
 
       {/* Success Stories Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
@@ -245,12 +200,40 @@ export default function Home() {
         </div>
       </section>
 
+      {/* PMC Categories Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
+              Find PMCs by Property Type
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Our PMCs specialize exclusively in vacation rentals and short-term accommodations. Some PMCs may manage different types of properties scattered across multiple locations, while others might focus on luxury properties in specific regions.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {pmcCategories.map((category, index) => (
+              <Card key={index} className="bg-white hover:shadow-lg transition-shadow duration-300">
+                <CardContent className="p-6">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <category.icon className="w-8 h-8 text-blue-600" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{category.title}</h3>
+                  <p className="text-gray-600 text-sm">{category.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Featured PMCs Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-              Featured PMCs
+              Our Featured PMCs
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Discover top-rated Property Management Companies trusted by property owners worldwide
@@ -325,19 +308,12 @@ export default function Home() {
             <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
               Join thousands of property owners who've found reliable property managers through our platform.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <div className="flex justify-center">
               <Button 
                 onClick={() => setLocation("/search-pmc")}
                 className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-4 rounded-full text-lg font-semibold"
               >
                 Find a PMC Now
-              </Button>
-              <Button 
-                onClick={() => setLocation("/list-your-pmc")}
-                variant="outline"
-                className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 rounded-full text-lg font-semibold"
-              >
-                List Your PMC
               </Button>
             </div>
             <p className="text-sm text-blue-200 mt-4">

@@ -345,19 +345,19 @@ export default function FeaturedHostsCarousel() {
                   <div className="mb-4 min-h-[3rem]"></div>
                 )}
 
-                {/* Why Book With CTA */}
+                {/* Why Rent With CTA */}
                 <div className="mb-6">
                   <Button 
                     asChild 
                     variant="outline" 
                     size="sm"
-                    className="w-full flex items-center justify-center gap-2 bg-gray-100 hover:bg-gray-200 border-gray-300 text-gray-700 hover:text-gray-800"
+                    className="w-full"
                   >
                     <Link 
                       to={`/property/${generateSlug(host.brandName)}`}
                       onClick={clickTracking.trackCompany}
                     >
-                      Why book with {host.brandName}?
+                      Why rent with {host.brandName}?
                     </Link>
                   </Button>
                 </div>

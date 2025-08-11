@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { CheckCircle, TrendingUp, Users, Globe, Shield, Zap, BarChart3, Calendar, DollarSign, Target, Building2, Handshake, Search, Home as HomeIcon, Star } from "lucide-react";
+import { Link } from "wouter";
 
 export default function Home() {
   const [, setLocation] = useLocation();
@@ -101,11 +102,17 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 text-white py-20 lg:py-32">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')"
+          }}
+        ></div>
+        <div className="absolute inset-0 bg-black/60"></div>
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
               Find Your Perfect Property Manager
             </h1>
             <p className="text-xl lg:text-2xl mb-8 opacity-90">
@@ -200,34 +207,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PMC Categories Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-              Find PMCs by Property Type
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Our PMCs specialize exclusively in vacation rentals and short-term accommodations. Some PMCs may manage different types of properties scattered across multiple locations, while others might focus on luxury properties in specific regions.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {pmcCategories.map((category, index) => (
-              <Card key={index} className="bg-white hover:shadow-lg transition-shadow duration-300">
-                <CardContent className="p-6">
-                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <category.icon className="w-8 h-8 text-blue-600" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2">{category.title}</h3>
-                  <p className="text-gray-600 text-sm">{category.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Featured PMCs Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -241,48 +220,336 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <Card className="bg-white hover:shadow-lg transition-shadow duration-300 border-2 border-blue-200">
-              <CardContent className="p-6">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Building2 className="w-8 h-8 text-blue-600" />
+            <Card className="group hover:shadow-lg transition-shadow duration-200 border border-gray-200 bg-white relative h-full">
+              {/* Featured Badge */}
+              <div className="absolute top-3 right-3 z-10">
+                <Badge className="bg-yellow-500 text-yellow-900 font-semibold">
+                  Featured
+                </Badge>
+              </div>
+
+              <CardContent className="p-6 flex flex-col h-full">
+                {/* Header Image with Logo Overlay */}
+                <div className="relative w-full h-48 mb-4 rounded-lg overflow-hidden bg-gradient-to-br from-blue-100 to-blue-200">
+                  <div className="w-full h-full flex items-center justify-center">
+                    <Building2 className="w-16 h-16 text-blue-600" />
+                  </div>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Elite Property Management</h3>
-                <p className="text-gray-600 text-sm mb-3">Luxury vacation rentals across Europe</p>
-                <div className="flex items-center justify-center mb-3">
-                  <span className="text-yellow-400 text-lg">★★★★★</span>
-                  <span className="text-sm text-gray-600 ml-2">4.9/5</span>
+
+                {/* Brand Header */}
+                <div className="mb-4">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-1 truncate">
+                    Elite Property Management
+                  </h3>
+                  
+                  {/* One-line Description */}
+                  <div className="min-h-[3rem]">
+                    <p className="text-sm italic text-gray-600 leading-relaxed line-clamp-2">
+                      Professional property management for luxury vacation rentals across Europe
+                    </p>
+                  </div>
                 </div>
-                <p className="text-gray-600 text-sm">Managing 150+ properties with 95% owner satisfaction</p>
+
+                {/* Property Count & Pricing */}
+                <div className="flex items-center justify-between mb-3 text-sm">
+                  <div className="flex items-center gap-1 text-gray-600">
+                    <Building2 className="w-4 h-4" />
+                    <span>150+ properties</span>
+                  </div>
+                  
+                  <div className="flex items-center gap-1 font-medium text-blue-600">
+                    <span className="text-gray-500">💰</span>
+                    <span>from €200 to €2000</span>
+                  </div>
+                </div>
+
+                {/* Types of Stays */}
+                <div className="mb-4 min-h-[2.5rem]">
+                  <div className="flex gap-2 flex-wrap">
+                    <Badge variant="secondary" className="text-xs">
+                      Villas
+                    </Badge>
+                    <Badge variant="secondary" className="text-xs">
+                      Apartments
+                    </Badge>
+                    <Badge variant="secondary" className="text-xs">
+                      Chalets
+                    </Badge>
+                  </div>
+                </div>
+
+                {/* Countries */}
+                <div className="mb-4">
+                  <div className="flex items-center gap-2 text-sm text-gray-600">
+                    <Globe className="w-4 h-4" />
+                    <span>🇫🇷 🇮🇹 🇪🇸 🇬🇷</span>
+                  </div>
+                </div>
+
+                {/* Why Rent With CTA */}
+                <div className="mb-6 mt-auto">
+                  <Button 
+                    asChild 
+                    variant="outline" 
+                    size="sm"
+                    className="w-full"
+                  >
+                    <Link href="/search-pmc">
+                      Why rent with Elite Property Management?
+                    </Link>
+                  </Button>
+                </div>
+
+                {/* Bottom Section: Social Links Left, Visit Website Right */}
+                <div className="flex items-center justify-between mt-auto pt-4">
+                  {/* Social Links - Left */}
+                  <div className="flex items-center gap-3">
+                    <div className="w-5 h-5 bg-pink-100 rounded-full flex items-center justify-center">
+                      <span className="text-xs">📱</span>
+                    </div>
+                  </div>
+
+                  {/* Visit Website - Right */}
+                  <div className="flex items-center gap-2">
+                    <Button 
+                      asChild 
+                      variant="default" 
+                      size="sm"
+                    >
+                      <a 
+                        href="#" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2"
+                      >
+                        <Globe className="w-4 h-4" />
+                        Visit Website
+                      </a>
+                    </Button>
+                  </div>
+                </div>
               </CardContent>
             </Card>
 
-            <Card className="bg-white hover:shadow-lg transition-shadow duration-300 border-2 border-green-200">
-              <CardContent className="p-6">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Building2 className="w-8 h-8 text-green-600" />
+            <Card className="group hover:shadow-lg transition-shadow duration-200 border border-gray-200 bg-white relative h-full">
+              {/* Featured Badge */}
+              <div className="absolute top-3 right-3 z-10">
+                <Badge className="bg-yellow-500 text-yellow-900 font-semibold">
+                  Featured
+                </Badge>
+              </div>
+
+              <CardContent className="p-6 flex flex-col h-full">
+                {/* Header Image with Logo Overlay */}
+                <div className="relative w-full h-48 mb-4 rounded-lg overflow-hidden bg-gradient-to-br from-green-100 to-green-200">
+                  <div className="w-full h-full flex items-center justify-center">
+                    <Building2 className="w-16 h-16 text-green-600" />
+                  </div>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Coastal Properties Group</h3>
-                <p className="text-gray-600 text-sm mb-3">Beachfront vacation homes</p>
-                <div className="flex items-center justify-center mb-3">
-                  <span className="text-yellow-400 text-lg">★★★★★</span>
-                  <span className="text-sm text-gray-600 ml-2">4.8/5</span>
+
+                {/* Brand Header */}
+                <div className="mb-4">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-1 truncate">
+                    Coastal Properties Group
+                  </h3>
+                  
+                  {/* One-line Description */}
+                  <div className="min-h-[3rem]">
+                    <p className="text-sm italic text-gray-600 leading-relaxed line-clamp-2">
+                      Specializing in beachfront vacation homes and coastal properties
+                    </p>
+                  </div>
                 </div>
-                <p className="text-gray-600 text-sm">Specializing in coastal properties with 20+ years experience</p>
+
+                {/* Property Count & Pricing */}
+                <div className="flex items-center justify-between mb-3 text-sm">
+                  <div className="flex items-center gap-1 text-gray-600">
+                    <Building2 className="w-4 h-4" />
+                    <span>75+ properties</span>
+                  </div>
+                  
+                  <div className="flex items-center gap-1 font-medium text-blue-600">
+                    <span className="text-gray-500">💰</span>
+                    <span>from €150 to €1500</span>
+                  </div>
+                </div>
+
+                {/* Types of Stays */}
+                <div className="mb-4 min-h-[2.5rem]">
+                  <div className="flex gap-2 flex-wrap">
+                    <Badge variant="secondary" className="text-xs">
+                      Beach Houses
+                    </Badge>
+                    <Badge variant="secondary" className="text-xs">
+                      Condos
+                    </Badge>
+                    <Badge variant="secondary" className="text-xs">
+                      Cottages
+                    </Badge>
+                  </div>
+                </div>
+
+                {/* Countries */}
+                <div className="mb-4">
+                  <div className="flex items-center gap-2 text-sm text-gray-600">
+                    <Globe className="w-4 h-4" />
+                    <span>🇺🇸 🇪🇸 🇵🇹 🇬🇷</span>
+                  </div>
+                </div>
+
+                {/* Why Rent With CTA */}
+                <div className="mb-6 mt-auto">
+                  <Button 
+                    asChild 
+                    variant="outline" 
+                    size="sm"
+                    className="w-full"
+                  >
+                    <Link href="/search-pmc">
+                      Why rent with Coastal Properties Group?
+                    </Link>
+                  </Button>
+                </div>
+
+                {/* Bottom Section: Social Links Left, Visit Website Right */}
+                <div className="flex items-center justify-between mt-auto pt-4">
+                  {/* Social Links - Left */}
+                  <div className="flex items-center gap-3">
+                    <div className="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center">
+                      <span className="text-xs">📱</span>
+                    </div>
+                  </div>
+
+                  {/* Visit Website - Right */}
+                  <div className="flex items-center gap-2">
+                    <Button 
+                      asChild 
+                      variant="default" 
+                      size="sm"
+                    >
+                      <a 
+                        href="#" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2"
+                      >
+                        <Globe className="w-4 h-4" />
+                        Visit Website
+                      </a>
+                    </Button>
+                  </div>
+                </div>
               </CardContent>
             </Card>
 
-            <Card className="bg-white hover:shadow-lg transition-shadow duration-300 border-2 border-purple-200">
-              <CardContent className="p-6">
-                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Building2 className="w-8 h-8 text-purple-600" />
+            <Card className="group hover:shadow-lg transition-shadow duration-200 border border-gray-200 bg-white relative h-full">
+              {/* Featured Badge */}
+              <div className="absolute top-3 right-3 z-10">
+                <Badge className="bg-yellow-500 text-yellow-900 font-semibold">
+                  Featured
+                </Badge>
+              </div>
+
+              <CardContent className="p-6 flex flex-col h-full">
+                {/* Header Image with Logo Overlay */}
+                <div className="relative w-full h-48 mb-4 rounded-lg overflow-hidden bg-gradient-to-br from-purple-100 to-purple-200">
+                  <div className="w-full h-full flex items-center justify-center">
+                    <Building2 className="w-16 h-16 text-purple-600" />
+                  </div>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Mountain Retreat Management</h3>
-                <p className="text-gray-600 text-sm mb-3">Alpine and mountain properties</p>
-                <div className="flex items-center justify-center mb-3">
-                  <span className="text-yellow-400 text-lg">★★★★★</span>
-                  <span className="text-sm text-gray-600 ml-2">4.9/5</span>
+
+                {/* Brand Header */}
+                <div className="mb-4">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-1 truncate">
+                    Mountain Retreat Management
+                  </h3>
+                  
+                  {/* One-line Description */}
+                  <div className="min-h-[3rem]">
+                    <p className="text-sm italic text-gray-600 leading-relaxed line-clamp-2">
+                      Expert in alpine and mountain properties with year-round optimization
+                    </p>
+                  </div>
                 </div>
-                <p className="text-gray-600 text-sm">Expert in seasonal rentals with year-round optimization</p>
+
+                {/* Property Count & Pricing */}
+                <div className="flex items-center justify-between mb-3 text-sm">
+                  <div className="flex items-center gap-1 text-gray-600">
+                    <Building2 className="w-4 h-4" />
+                    <span>120+ properties</span>
+                  </div>
+                  
+                  <div className="flex items-center gap-1 font-medium text-blue-600">
+                    <span className="text-gray-500">💰</span>
+                    <span>from €100 to €1200</span>
+                  </div>
+                </div>
+
+                {/* Types of Stays */}
+                <div className="mb-4 min-h-[2.5rem]">
+                  <div className="flex gap-2 flex-wrap">
+                    <Badge variant="secondary" className="text-xs">
+                      Cabins
+                    </Badge>
+                    <Badge variant="secondary" className="text-xs">
+                      Chalets
+                    </Badge>
+                    <Badge variant="secondary" className="text-xs">
+                      Lodges
+                    </Badge>
+                  </div>
+                </div>
+
+                {/* Countries */}
+                <div className="mb-4">
+                  <div className="flex items-center gap-2 text-sm text-gray-600">
+                    <Globe className="w-4 h-4" />
+                    <span>🇨🇭 🇦🇹 🇫🇷 🇮🇹</span>
+                  </div>
+                </div>
+
+                {/* Why Rent With CTA */}
+                <div className="mb-6 mt-auto">
+                  <Button 
+                    asChild 
+                    variant="outline" 
+                    size="sm"
+                    className="w-full"
+                  >
+                    <Link href="/search-pmc">
+                      Why rent with Mountain Retreat Management?
+                    </Link>
+                  </Button>
+                </div>
+
+                {/* Bottom Section: Social Links Left, Visit Website Right */}
+                <div className="flex items-center justify-between mt-auto pt-4">
+                  {/* Social Links - Left */}
+                  <div className="flex items-center gap-3">
+                    <div className="w-5 h-5 bg-purple-100 rounded-full flex items-center justify-center">
+                      <span className="text-xs">📱</span>
+                    </div>
+                  </div>
+
+                  {/* Visit Website - Right */}
+                  <div className="flex items-center gap-2">
+                    <Button 
+                      asChild 
+                      variant="default" 
+                      size="sm"
+                    >
+                      <a 
+                        href="#" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2"
+                      >
+                        <Globe className="w-4 h-4" />
+                        Visit Website
+                      </a>
+                    </Button>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           </div>

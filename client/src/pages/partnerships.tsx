@@ -50,7 +50,7 @@ export default function Partnerships() {
                 </svg>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">Rapid Growth</h3>
-              <p className="text-gray-600 text-sm">Direct booking demand is booming: 1,000+ verified hosts across 50+ countries and growing every day.</p>
+              <p className="text-gray-600 text-sm">PMC demand is booming: 1,000+ verified PMCs across 50+ countries and growing every day.</p>
             </div>
 
             <div className="text-center">
@@ -70,7 +70,7 @@ export default function Partnerships() {
                 </svg>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">Industry Impact</h3>
-              <p className="text-gray-600 text-sm">Become a partner today and position yourself as a pioneer in the rapidly evolving direct booking market.</p>
+              <p className="text-gray-600 text-sm">Become a partner today and position yourself as a pioneer in the rapidly evolving STR market.</p>
             </div>
           </div>
         </div>
@@ -101,7 +101,7 @@ export default function Partnerships() {
               </CardHeader>
               <CardContent className="p-6 flex flex-col flex-grow">
                 <p className="text-gray-600 mb-6">
-                  Maximize your visibility and drive more direct bookings with our tailored consulting and content creation services.
+                  Maximize your visibility and drive more inbound leads from property owners with our tailored consulting and content creation services.
                 </p>
                 
                 <div className="space-y-4 mb-6 flex-grow">
@@ -109,7 +109,7 @@ export default function Partnerships() {
                     <div className="w-2 h-2 bg-blue-600 rounded-full mt-2"></div>
                     <div>
                       <h4 className="font-semibold text-gray-900">Content Creation for Social Media</h4>
-                      <p className="text-sm text-gray-600">Engaging, high-conversion content designed for your socials to showcase your properties and attract guests where they are most active.</p>
+                      <p className="text-sm text-gray-600">Engaging, high-conversion content designed for your socials to showcase your PMC expertise and attract property owners where they are most active.</p>
                     </div>
                   </div>
                   
@@ -117,7 +117,7 @@ export default function Partnerships() {
                     <div className="w-2 h-2 bg-blue-600 rounded-full mt-2"></div>
                     <div>
                       <h4 className="font-semibold text-gray-900">Consulting Services</h4>
-                      <p className="text-sm text-gray-600">Strategic guidance to increase your direct website's visibility, strengthen your brand, and turn traffic into direct bookings.</p>
+                      <p className="text-sm text-gray-600">Strategic guidance to increase your PMC's visibility, strengthen your brand, and turn traffic into qualified property owner leads.</p>
                     </div>
                   </div>
                   
@@ -195,7 +195,7 @@ export default function Partnerships() {
               </CardHeader>
               <CardContent className="p-6 flex flex-col flex-grow">
                 <p className="text-gray-600 mb-6">
-                  Access comprehensive market intelligence and exclusive opportunities in the rapidly growing direct booking sector.
+                  Access comprehensive market intelligence and exclusive opportunities in the rapidly growing STR and vacation rental management sector.
                 </p>
                 
                 <div className="space-y-4 mb-6 flex-grow">

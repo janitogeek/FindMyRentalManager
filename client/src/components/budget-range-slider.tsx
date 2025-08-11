@@ -125,7 +125,7 @@ export default function BudgetRangeSlider({
     <div className={`w-full ${className}`}>
       {/* Title */}
       <h3 className="text-lg font-semibold text-gray-900 mb-2">
-        Average Daily Rate (per night)
+        Average Daily Rate
       </h3>
       
       {/* Selected Range Display */}

@@ -581,19 +581,19 @@ export default function SubmissionPropertyCard({ submission }: SubmissionPropert
             <div className="mb-4 min-h-[3rem]"></div>
           )}
 
-          {/* Why Book With CTA */}
+          {/* Why Rent With CTA */}
           <div className="mb-6">
             <Button 
               asChild 
               variant="outline" 
               size="sm"
-              className="w-full flex items-center justify-center gap-2 bg-gray-100 hover:bg-gray-200 border-gray-300 text-gray-700 hover:text-gray-800"
+              className="w-full"
             >
               <Link 
                 href={`/property/${slug}`}
-                onClick={() => trackCompany()} // Track company page clicks
+                onClick={() => trackCompany()}
               >
-                Why book with {submission.brandName}?
+                Why rent with {submission.brandName}?
               </Link>
             </Button>
           </div>

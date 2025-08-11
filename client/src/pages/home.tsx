@@ -245,42 +245,72 @@ export default function Home() {
         </div>
       </section>
 
-      {/* How It Works Section */}
+      {/* Featured PMCs Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-              How It Works
+              Featured PMCs
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Finding your perfect property manager is simple and straightforward
+              Discover top-rated Property Management Companies trusted by property owners worldwide
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <div className="text-center p-6">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-blue-600">1</span>
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Search & Filter</h3>
-              <p className="text-gray-600 text-sm">Find PMCs by location, property type, services, and ratings</p>
-            </div>
-            
-            <div className="text-center p-6">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-green-600">2</span>
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Compare & Connect</h3>
-              <p className="text-gray-600 text-sm">Review PMC profiles and contact the ones that match your needs</p>
-            </div>
-            
-            <div className="text-center p-6">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-purple-600">3</span>
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Get Started</h3>
-              <p className="text-gray-600 text-sm">Choose your PMC and start earning passive income from your property</p>
-            </div>
+            <Card className="bg-white hover:shadow-lg transition-shadow duration-300 border-2 border-blue-200">
+              <CardContent className="p-6">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Building2 className="w-8 h-8 text-blue-600" />
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Elite Property Management</h3>
+                <p className="text-gray-600 text-sm mb-3">Luxury vacation rentals across Europe</p>
+                <div className="flex items-center justify-center mb-3">
+                  <span className="text-yellow-400 text-lg">★★★★★</span>
+                  <span className="text-sm text-gray-600 ml-2">4.9/5</span>
+                </div>
+                <p className="text-gray-600 text-sm">Managing 150+ properties with 95% owner satisfaction</p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white hover:shadow-lg transition-shadow duration-300 border-2 border-green-200">
+              <CardContent className="p-6">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Building2 className="w-8 h-8 text-green-600" />
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Coastal Properties Group</h3>
+                <p className="text-gray-600 text-sm mb-3">Beachfront vacation homes</p>
+                <div className="flex items-center justify-center mb-3">
+                  <span className="text-yellow-400 text-lg">★★★★★</span>
+                  <span className="text-sm text-gray-600 ml-2">4.8/5</span>
+                </div>
+                <p className="text-gray-600 text-sm">Specializing in coastal properties with 20+ years experience</p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white hover:shadow-lg transition-shadow duration-300 border-2 border-purple-200">
+              <CardContent className="p-6">
+                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Building2 className="w-8 h-8 text-purple-600" />
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Mountain Retreat Management</h3>
+                <p className="text-gray-600 text-sm mb-3">Alpine and mountain properties</p>
+                <div className="flex items-center justify-center mb-3">
+                  <span className="text-yellow-400 text-lg">★★★★★</span>
+                  <span className="text-sm text-gray-600 ml-2">4.9/5</span>
+                </div>
+                <p className="text-gray-600 text-sm">Expert in seasonal rentals with year-round optimization</p>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="text-center mt-12">
+            <Button 
+              onClick={() => setLocation("/search-pmc")}
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg text-lg font-semibold"
+            >
+              View All PMCs
+            </Button>
           </div>
         </div>
       </section>
@@ -300,7 +330,7 @@ export default function Home() {
                 onClick={() => setLocation("/search-pmc")}
                 className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-4 rounded-full text-lg font-semibold"
               >
-                Start Your Search
+                Find a PMC Now
               </Button>
               <Button 
                 onClick={() => setLocation("/list-your-pmc")}

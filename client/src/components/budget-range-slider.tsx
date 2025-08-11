@@ -125,11 +125,11 @@ export default function BudgetRangeSlider({
     <div className={`w-full ${className}`}>
       {/* Title */}
       <h3 className="text-lg font-semibold text-gray-900 mb-2">
-        Your budget (per night)
+        Target ADR Range (per night)
       </h3>
       
       {/* Selected Range Display */}
-      <div className="text-sm text-gray-600 mb-4">
+      <div className="text-sm text-gray-600 mb-2">
         From € {minPrice} to € {maxPrice >= MAX_RANGE ? `${maxPrice}+` : maxPrice}
       </div>
 

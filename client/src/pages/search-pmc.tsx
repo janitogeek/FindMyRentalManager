@@ -88,7 +88,7 @@ export default function SearchPMC() {
   });
 
   // Fetch PMC submission counts for each active country - optimized to avoid individual calls
-  const { data: countriesWithCounts = [] } = useQuery({
+  const { data: countriesWithCounts = [], isLoading: isCountsLoading } = useQuery({
     queryKey: ["/api/countries-with-counts", activeCountryNames],
     queryFn: async () => {
       // Get all submissions at once instead of individual country calls
@@ -118,7 +118,7 @@ export default function SearchPMC() {
   console.log('🌍 Search PMC - Active countries:', activeCountryNames);
   console.log('📊 Search PMC - Countries with counts:', countriesWithCounts);
 
-  const isLoading = isCountriesLoading;
+  const isLoading = isCountriesLoading || isCountsLoading;
   const isSearching = searchQuery.trim().length > 0;
 
   // Filter countries based on search query - memoized for performance

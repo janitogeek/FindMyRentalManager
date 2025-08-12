@@ -115,7 +115,7 @@ export default function Home() {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
               Find Your Perfect Property Manager
             </h1>
-            <p className="text-xl lg:text-2xl mb-8 opacity-90">
+            <p className="text-xl lg:text-2xl mb-8 text-white">
               Connect with verified Property Management Companies specializing in Short-Term Rentals and vacation properties
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

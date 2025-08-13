@@ -33,22 +33,16 @@ const CountryCard = memo(({ country, countriesWithCounts }: {
           <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
             {country.name}
           </h3>
-                        <div className="flex items-center justify-center gap-2 text-sm text-gray-600">
-                          <Building2 className="w-4 h-4" />
-                          <span>
-                            {countriesWithCounts.length > 0 ? (
-                              country.listingCount > 0 ? (
-                                `${country.listingCount} PMC${country.listingCount !== 1 ? 's' : ''}`
-                              ) : (
-                                'PMCs available'
-                              )
-                            ) : activeCountryNames.length > 0 ? (
-                              <span className="animate-pulse">Calculating...</span>
-                            ) : (
-                              <span className="animate-pulse">Loading...</span>
-                            )}
-                          </span>
-                        </div>
+          <div className="flex items-center justify-center gap-2 text-sm text-gray-600">
+            <Building2 className="w-4 h-4" />
+            <span>
+              {country.listingCount > 0 ? (
+                `${country.listingCount} PMC${country.listingCount !== 1 ? 's' : ''}`
+              ) : (
+                'PMCs available'
+              )}
+            </span>
+          </div>
           <div className="mt-3">
             <Badge variant="secondary" className="bg-blue-100 text-blue-800">
               View PMCs
